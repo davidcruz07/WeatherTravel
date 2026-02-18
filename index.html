@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherTravel</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>WeatherTravel</h1>
+        <form id="searchForm">
+            <input type="text" id="cityInput" placeholder="Ej: Cumpas, MX" required autocomplete="off">
+            <div id="suggestions" class="suggestions-box"></div>
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+
+    <main id="app">
+        <div class="dashboard-grid">
+            
+            <aside id="recentSearches" class="side-panel">
+                <h3>Búsquedas recientes</h3>
+                <div id="historyList" class="vertical-list">
+                    </div>
+            </aside>
+
+            <section class="main-display">
+                <div id="weatherCard" class="card hidden">
+                    </div>
+
+                <div id="recommendations" class="card hidden">
+                    <h3>Recomendaciones para hoy</h3>
+                    <div id="recList"></div>
+                </div>
+            </section>
+
+            <aside id="favorites" class="side-panel">
+                <h3>Mis Favoritos</h3>
+                <ul id="favList" class="vertical-list">
+                    </ul>
+            </aside>
+
+        </div>
+    </main>
+
+   <script src="js/api.js"></script>
+
+    <script src="js/storage.js"></script>
+
+    <script src="js/ui.js"></script>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

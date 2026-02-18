@@ -1,4 +1,4 @@
-// --- CONFIGURACION GLOBAL ---
+
 const API_KEY = 'e739cdf2bfff015ecd5705898b644176';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/';
 
@@ -13,7 +13,7 @@ const circuitBreaker = {
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function fetchWithResilience(url, retries = 2) {
-    // 1. Verificación del Circuit Breaker
+   
     if (circuitBreaker.state === 'OPEN') {
         if (Date.now() > circuitBreaker.nextAttempt) {
             circuitBreaker.state = 'HALF_OPEN';
@@ -44,13 +44,13 @@ async function fetchWithResilience(url, retries = 2) {
 
         const data = await response.json();
         
-        // Éxito: Reiniciamos el contador y cerramos el circuito
+      
         circuitBreaker.failures = 0;
         circuitBreaker.state = 'CLOSED';
         return data;
 
     } catch (error) {
-        // 2. Lógica de Reintentos (si no es un error de usuario 404/401)
+        
         if (retries > 0 && !error.message.includes('autorizada') && !error.message.includes('encontrada')) {
             if (typeof mostrarNotificacion === "function") {
                 mostrarNotificacion("Problema de conexión. Reintentando...", 'warning');
@@ -59,7 +59,7 @@ async function fetchWithResilience(url, retries = 2) {
             return fetchWithResilience(url, retries - 1);
         }
 
-        // 3. Manejo de Fallos Fatales
+        
         circuitBreaker.failures++;
         
         if (circuitBreaker.failures >= circuitBreaker.threshold) {

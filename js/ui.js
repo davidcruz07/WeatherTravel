@@ -100,7 +100,7 @@ function mostrarNotificacion(mensaje, tipo = 'error') {
     alerta.className = 'alerta-clima';
     
    
-    const colorFondo = tipo === 'error' ? '#e74c3c' : '#f39c12'; // Rojo para error, Naranja para advertencia
+    const colorFondo = tipo === 'error' ? '#e74c3c' : '#f39c12';
     
     alerta.style.cssText = `
         position: fixed;

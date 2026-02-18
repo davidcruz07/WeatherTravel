@@ -1,5 +1,3 @@
-// --- FUNCIONES DE RENDERIZADO (UI) ---
-
 function renderWeather(data) {
     const card = document.getElementById('weatherCard');
     card.classList.remove('hidden');
@@ -91,17 +89,17 @@ function generateRecommendations(condition) {
     recList.innerHTML = `<p>${activities[condition] || "¡Disfruta tu viaje!"}</p>`;
 }
 
-// --- NOTIFICACIONES VISUALES ---
+
 
 function mostrarNotificacion(mensaje, tipo = 'error') {
-    // Eliminar alerta previa si existe
+   
     const alertaExistente = document.querySelector('.alerta-clima');
     if (alertaExistente) alertaExistente.remove();
 
     const alerta = document.createElement('div');
     alerta.className = 'alerta-clima';
     
-    // Estilos dinámicos para el mensaje
+   
     const colorFondo = tipo === 'error' ? '#e74c3c' : '#f39c12'; // Rojo para error, Naranja para advertencia
     
     alerta.style.cssText = `
@@ -122,7 +120,7 @@ function mostrarNotificacion(mensaje, tipo = 'error') {
     alerta.textContent = mensaje;
     document.body.appendChild(alerta);
 
-    // Animación de salida y auto-eliminación
+    
     setTimeout(() => {
         alerta.style.opacity = '0';
         alerta.style.transform = 'translateY(-20px)';

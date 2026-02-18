@@ -18,7 +18,7 @@ async function fetchWithResilience(url, retries = 2) {
         if (Date.now() > circuitBreaker.nextAttempt) {
             circuitBreaker.state = 'HALF_OPEN';
         } else {
-            // AVISO VISUAL AL USUARIO: Informamos el tiempo de espera
+           
             const segundosRestantes = Math.ceil((circuitBreaker.nextAttempt - Date.now()) / 1000);
             if (typeof mostrarNotificacion === "function") {
                 mostrarNotificacion(`Servicio pausado por seguridad. Reintenta en ${segundosRestantes}s`, 'warning');

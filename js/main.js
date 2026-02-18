@@ -33,7 +33,7 @@ function limpiarSugerencias() {
     if (div) div.innerHTML = '';
 }
 
-// Eventos
+
 document.getElementById('searchForm').addEventListener('submit', (e) => {
     e.preventDefault();
     const city = document.getElementById('cityInput').value.trim();
@@ -50,6 +50,6 @@ document.getElementById('cityInput').addEventListener('keyup', (e) => {
     timeoutId = setTimeout(() => fetchSugerencias(query), 500);
 });
 
-// Inicialización
+
 renderFavorites();
 renderHistory();
